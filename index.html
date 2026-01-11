@@ -1,629 +1,839 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Трансформатори: Фізика 11 клас</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>OSINT Portal | НОМЕР 79601143787</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&family=Inter:wght@300;400&display=swap');
+        /* RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Exo 2', sans-serif;
-            background-color: #020617;
-            color: #e2e8f0;
-            overflow: hidden; 
-            height: 100vh;
-            perspective: 1000px;
+            font-family: 'Courier New', monospace;
+            background: #000000;
+            color: #ffffff;
+            line-height: 1.4;
         }
-
-        /* Покращений, повільніший фон */
-        .bg-animated {
+        
+        /* LOGIN SCREEN */
+        .login-screen {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 50%, #020617 100%);
-            z-index: -2;
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-            animation: floatOrb 20s infinite ease-in-out;
-        }
-
-        @keyframes floatOrb {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Плавні переходи слайдів */
-        .slide {
-            display: none;
-            height: 100vh;
-            flex-direction: column;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(20px) scale(0.98);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 1000;
         }
-
-        .slide.active {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0) scale(1);
+        
+        .login-box {
+            background: #111111;
+            border: 1px solid #333333;
+            padding: 60px 40px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
         }
-
-        /* Glass Panel Styling */
-        .glass {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            border-radius: 1.5rem;
+        
+        .login-title {
+            font-size: 18px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff;
         }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #e879f9 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
-
-        /* Сповільнені анімації схем */
-        .magnetic-flux {
-            stroke-dasharray: 20;
-            animation: flow 5s linear infinite reverse; /* Було 3s */
-            opacity: 0.8;
-            filter: drop-shadow(0 0 8px #f59e0b);
-        }
-
-        @keyframes flow { to { stroke-dashoffset: -200; } }
-
-        .sine-wave {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            animation: drawSine 6s linear infinite; /* Було 4s */
-        }
-        @keyframes drawSine {
-            to { stroke-dashoffset: 0; }
-        }
-
-        /* Slider Styles */
-        input[type="range"] {
-            -webkit-appearance: none;
-            appearance: none;
-            background: transparent;
+        
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background: #ffffff;
+            color: #000000;
+            border: 1px solid #ffffff;
+            font-family: 'Courier New';
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            height: 24px;
+            transition: 0.3s;
         }
-        input[type="range"]::-webkit-slider-runnable-track {
-            background: rgba(255, 255, 255, 0.1);
-            height: 8px;
-            border-radius: 4px;
+        
+        .login-btn:hover {
+            background: #000000;
+            color: #ffffff;
         }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 24px;
+        
+        /* MAIN INTERFACE */
+        .main-interface {
+            display: none;
+            min-height: 100vh;
+        }
+        
+        /* HEADER */
+        .header {
+            background: #111111;
+            border-bottom: 1px solid #333333;
+            padding: 20px 40px;
+        }
+        
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .case-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .case-id {
+            font-size: 11px;
+            color: #888888;
+        }
+        
+        .logout-btn {
+            background: none;
+            border: 1px solid #666666;
+            color: #ffffff;
+            padding: 8px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        
+        /* TABS */
+        .tabs {
+            display: flex;
+            background: #000000;
+            border-bottom: 1px solid #333333;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: #111111;
+            border: none;
+            border-right: 1px solid #333333;
+            color: #888888;
+            font-family: 'Courier New';
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        
+        .tab:last-child { border-right: none; }
+        .tab.active { background: #000000; color: #ffffff; border-bottom: 2px solid #ffffff; }
+        
+        /* CONTENT AREA */
+        .content {
+            padding: 40px;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* DATA GRID STYLE */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .data-card {
+            background: #111111;
+            border: 1px solid #333333;
+            padding: 25px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333333;
+        }
+        
+        .card-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .card-id {
+            font-size: 11px;
+            color: #888888;
+        }
+        
+        .data-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #222222;
+        }
+        
+        .data-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .item-label {
+            font-size: 11px;
+            color: #888888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .item-value {
+            font-size: 14px;
+            word-break: break-all;
+        }
+        
+        .confidence {
+            font-size: 11px;
+            color: #666666;
+            margin-top: 5px;
+        }
+        
+        .verified {
+            color: #00ff00;
+        }
+        
+        .unverified {
+            color: #ff0000;
+        }
+        
+        .warning {
+            color: #ff9900;
+        }
+        
+        /* CHAIN VIEW */
+        .chain-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .chain-step {
+            margin-bottom: 40px;
+            padding-left: 40px;
+            border-left: 1px solid #333333;
+            position: relative;
+        }
+        
+        .chain-step:last-child {
+            border-left: none;
+        }
+        
+        .step-number {
+            position: absolute;
+            left: -12px;
+            top: 0;
             width: 24px;
+            height: 24px;
+            background: #000000;
+            border: 1px solid #ffffff;
             border-radius: 50%;
-            background: #60a5fa;
-            border: 4px solid #1e293b;
-            margin-top: -8px;
-            box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
-            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
         }
-        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
-
+        
+        .step-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        /* ANALYSIS TAB */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .analysis-card {
+            background: #111111;
+            border: 1px solid #333333;
+            padding: 25px;
+        }
+        
+        .risk-item {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #ffffff;
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: #111111;
+            border-top: 1px solid #333333;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 11px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .content { padding: 20px; }
+            .grid-container { grid-template-columns: 1fr; }
+        }
+        
+        /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ */
+        .phone-status {
+            display: inline-block;
+            padding: 3px 8px;
+            background: #ff0000;
+            color: white;
+            font-size: 10px;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .age-warning {
+            color: #ff9900;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-
-    <div class="bg-animated"></div>
-    <div class="orb bg-blue-600/30 w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
-    <div class="orb bg-purple-600/30 w-[600px] h-[600px] bottom-[-100px] right-[-100px]" style="animation-delay: -5s;"></div>
-
-    <div class="fixed top-0 left-0 h-1 bg-slate-800 w-full z-50">
-        <div id="progress-bar" class="h-full bg-gradient-to-r from-blue-500 to-purple-500 w-0 transition-all duration-700 ease-out"></div>
-    </div>
-
-    <div class="fixed bottom-8 left-0 right-0 flex justify-center items-center gap-6 z-50 pointer-events-none">
-        <div class="glass px-2 py-2 flex gap-4 pointer-events-auto rounded-full">
-            <button onclick="prevSlide()" class="p-3 hover:bg-white/10 rounded-full transition-all text-white disabled:opacity-30 disabled:cursor-not-allowed group" id="btnPrev">
-                <i data-lucide="arrow-left" class="w-6 h-6 group-hover:-translate-x-1 transition-transform"></i>
-            </button>
-            <div class="flex gap-2 items-center px-2" id="dots-container"></div>
-            <button onclick="nextSlide()" class="p-3 bg-blue-600 hover:bg-blue-500 rounded-full shadow-[0_0_20px_rgba(37,99,235,0.5)] text-white transition-all hover:scale-105 group" id="btnNext">
-                <i data-lucide="arrow-right" class="w-6 h-6 group-hover:translate-x-1 transition-transform"></i>
-            </button>
+    <!-- LOGIN SCREEN -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <div class="login-title">Система OSINT-расследования</div>
+            <button class="login-btn" id="loginBtn">Войти в систему</button>
         </div>
     </div>
-
-    <div class="slide active" id="slide-1">
-        <div class="text-center relative z-10">
-            <div class="mb-10 inline-block relative">
-                <div class="absolute inset-0 bg-yellow-400 blur-[60px] opacity-20 animate-pulse"></div>
-                <i data-lucide="zap" class="w-24 h-24 text-yellow-400 relative drop-shadow-[0_0_25px_rgba(250,204,21,0.6)] animate-bounce" style="animation-duration: 3s;"></i>
+    
+    <!-- MAIN INTERFACE -->
+    <div class="main-interface" id="mainInterface">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="case-header">
+                <div>
+                    <div class="case-title">Расследование: НОМЕР 79601143787</div>
+                    <div class="case-id">Дело № OSINT-2024-002 | Обновлено: 11.01.2026</div>
+                </div>
+                <button class="logout-btn" id="logoutBtn">ВЫХОД</button>
             </div>
-            <h1 class="text-6xl md:text-9xl font-extrabold mb-4 gradient-text tracking-tight uppercase">Трансформатори</h1>
-            <h2 class="text-xl md:text-3xl text-slate-300 mb-12 font-light tracking-wider border-t border-b border-white/10 py-4 inline-block">Фізика передачі енергії • 11 клас</h2>
             
-            <div class="glass px-8 py-4 inline-flex items-center gap-4 hover:bg-white/5 transition-colors cursor-default">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center font-bold">Я</div>
-                <div class="text-left">
-                    <p class="text-xs uppercase tracking-widest text-slate-400">Підготував</p>
-                    <p class="text-white font-bold text-lg">Яценко Денис</p>
-                </div>
+            <!-- TABS -->
+            <div class="tabs">
+                <button class="tab active" data-tab="data">Данные</button>
+                <button class="tab" data-tab="chain">Цепочка</button>
+                <button class="tab" data-tab="analysis">Анализ</button>
+                <button class="tab" data-tab="grid">Сетка</button>
             </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide-2">
-        <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="order-2 lg:order-1 relative">
-                 <div class="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full"></div>
-                
-                <div class="glass p-10 relative z-10 transform hover:scale-[1.02] transition-transform duration-500">
-                    <svg width="100%" viewBox="0 0 340 340" fill="none" stroke="currentColor" stroke-width="2">
-                        <defs>
-                            <filter id="neon-glow"><feGaussianBlur stdDeviation="3.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-                        </defs>
-                        <rect x="50" y="50" width="240" height="240" rx="12" stroke="#475569" stroke-width="30" fill="transparent"/>
-                        <rect x="50" y="50" width="240" height="240" rx="12" stroke="#0f172a" stroke-width="26" fill="transparent"/>
-                        
-                        <rect x="65" y="65" width="210" height="210" rx="8" stroke="#fbbf24" stroke-width="2" fill="transparent" class="magnetic-flux" style="filter: url(#neon-glow); opacity: 0.6;"/>
-                        
-                        <path d="M20 90 Q 65 90 65 110 T 20 130 T 65 150 T 20 170 T 65 190 T 20 210" stroke="#ef4444" stroke-width="8" fill="none" stroke-linecap="round"/>
-                        <circle cx="20" cy="90" r="4" fill="#ef4444"/>
-                        <circle cx="20" cy="210" r="4" fill="#ef4444"/>
-                        <text x="0" y="250" fill="#ef4444" class="text-lg font-bold">ВХІД (U1)</text>
-
-                        <path d="M275 90 Q 320 90 320 110 T 275 130 T 320 150" stroke="#3b82f6" stroke-width="8" fill="none" stroke-linecap="round"/>
-                        <circle cx="320" cy="90" r="4" fill="#3b82f6"/>
-                        <circle cx="320" cy="150" r="4" fill="#3b82f6"/>
-                        <text x="260" y="250" fill="#3b82f6" class="text-lg font-bold">ВИХІД (U2)</text>
-                    </svg>
-                </div>
-            </div>
-
-            <div class="order-1 lg:order-2 space-y-8">
-                <h2 class="text-5xl font-bold leading-tight">Принцип <span class="text-blue-400">Індукції</span></h2>
-                <div class="space-y-4">
-                    <div class="glass p-6 border-l-4 border-l-red-500 flex gap-4">
-                        <div class="mt-1"><i data-lucide="zap" class="text-red-400"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Крок 1: Змінний струм</h3>
-                            <p class="text-slate-400">Струм у первинній обмотці створює змінне магнітне поле.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-6 border-l-4 border-l-yellow-500 flex gap-4">
-                        <div class="mt-1"><i data-lucide="magnet" class="text-yellow-400"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Крок 2: Магнітний потік</h3>
-                            <p class="text-slate-400">Залізне осердя "ловить" це поле і передає його далі.</p>
-                        </div>
-                    </div>
-                    <div class="glass p-6 border-l-4 border-l-blue-500 flex gap-4">
-                        <div class="mt-1"><i data-lucide="refresh-cw" class="text-blue-400"></i></div>
-                        <div>
-                            <h3 class="text-xl font-bold text-white">Крок 3: ЕРС Індукції</h3>
-                            <p class="text-slate-400">Змінне поле створює новий струм у вторинній обмотці.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide-3">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">Чому не батарейка?</h2>
-        <p class="text-center text-slate-400 mb-12 text-lg">Трансформатор "не бачить" постійний струм</p>
+        </header>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
-            <div class="glass p-8 border-t-4 border-t-green-500 hover:bg-slate-800/50 transition-colors">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <h3 class="text-3xl font-bold text-green-400 mb-1">Змінний (AC)</h3>
-                        <p class="text-sm text-slate-400">Розетка, генератор</p>
-                    </div>
-                    <div class="p-3 bg-green-500/10 rounded-xl text-green-400"><i data-lucide="activity" class="w-8 h-8"></i></div>
-                </div>
-                
-                <div class="h-40 bg-black/40 rounded-xl mb-6 relative overflow-hidden border border-white/5 flex items-center">
-                    <svg class="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                        <path d="" fill="none" stroke="#4ade80" stroke-width="3" class="sine-wave">
-                            <animate attributeName="d" 
-                                values="M0 50 Q 37.5 10 75 50 T 150 50 T 225 50 T 300 50; 
-                                        M-300 50 Q -262.5 10 -225 50 T -150 50 T -75 50 T 0 50" 
-                                dur="4s" repeatCount="indefinite" />
-                        </path>
-                        <line x1="0" y1="50" x2="300" y2="50" stroke="#ffffff" stroke-opacity="0.2" stroke-dasharray="4"/>
-                    </svg>
-                    <div class="absolute top-2 right-2 text-xs text-green-500 font-mono">ΔΦ/Δt ≠ 0</div>
-                </div>
-
-                <div class="flex items-center gap-3 text-green-200 bg-green-500/10 p-4 rounded-lg">
-                    <i data-lucide="check-circle-2" class="w-6 h-6 flex-shrink-0"></i>
-                    <span>Магнітне поле постійно змінюється -> <strong>Є індукція!</strong></span>
-                </div>
-            </div>
-
-            <div class="glass p-8 border-t-4 border-t-red-500 hover:bg-slate-800/50 transition-colors opacity-90">
-                <div class="flex justify-between items-start mb-8">
-                    <div>
-                        <h3 class="text-3xl font-bold text-red-400 mb-1">Постійний (DC)</h3>
-                        <p class="text-sm text-slate-400">Батарейка, акумулятор</p>
-                    </div>
-                    <div class="p-3 bg-red-500/10 rounded-xl text-red-400"><i data-lucide="battery" class="w-8 h-8"></i></div>
-                </div>
-
-                <div class="h-40 bg-black/40 rounded-xl mb-6 relative overflow-hidden border border-white/5 flex items-center">
-                    <svg class="w-full h-full" viewBox="0 0 300 100">
-                        <line x1="0" y1="30" x2="300" y2="30" stroke="#f87171" stroke-width="3" />
-                        <line x1="0" y1="50" x2="300" y2="50" stroke="#ffffff" stroke-opacity="0.2" stroke-dasharray="4"/>
-                    </svg>
-                    <div class="absolute top-2 right-2 text-xs text-red-500 font-mono">ΔΦ/Δt = 0</div>
-                </div>
-
-                <div class="flex items-center gap-3 text-red-200 bg-red-500/10 p-4 rounded-lg">
-                    <i data-lucide="x-circle" class="w-6 h-6 flex-shrink-0"></i>
-                    <span>Поле не змінюється -> <strong>Індукції немає</strong> (тільки нагрів)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide-4">
-        <h2 class="text-3xl font-bold mb-2 text-center text-blue-300 uppercase tracking-widest">Лабораторія</h2>
-        <p class="text-center mb-10 text-slate-400">Змінюйте кількість витків та спостерігайте за напругою</p>
-
-        <div class="glass p-8 md:p-12 w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            <div class="lg:col-span-7 flex flex-col justify-center gap-8">
-                <div class="bg-slate-900/40 p-6 rounded-2xl border border-white/5">
-                    <div class="flex justify-between mb-4">
-                        <label class="flex items-center gap-2 text-red-400 font-bold">
-                            <i data-lucide="plug"></i> Вхідна напруга (U1)
-                        </label>
-                        <span class="font-mono text-xl text-white bg-slate-800 px-3 py-1 rounded border border-slate-700"><span id="val-u1">220</span> В</span>
-                    </div>
-                    <input type="range" min="10" max="1000" value="220" id="input-u1" class="w-full">
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bg-slate-900/40 p-6 rounded-2xl border border-white/5">
-                        <div class="flex justify-between mb-4">
-                            <label class="text-slate-300 font-bold">Витки (N1)</label>
-                            <span class="font-mono text-white"><span id="val-n1">1000</span></span>
+        <!-- CONTENT -->
+        <div class="content">
+            <!-- TAB 1: ДАННЫЕ -->
+            <div class="tab-content active" id="dataTab">
+                <div class="grid-container">
+                    <!-- ЛИЧНОСТИ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Личности</div>
+                            <div class="card-id">01</div>
                         </div>
-                        <input type="range" min="100" max="2000" value="1000" step="50" id="input-n1" class="w-full">
-                        <div class="h-2 w-full bg-red-500/20 mt-4 rounded-full overflow-hidden">
-                            <div id="bar-n1" class="h-full bg-red-500 transition-all duration-300"></div>
+                        <div class="data-item">
+                            <div class="item-label">Основное ФИО</div>
+                            <div class="item-value">ХАЗОВ ДМИТРИЙ ГЕННАДЬЕВИЧ <span class="age-warning">(НЕСОВЕРШЕННОЛЕТНИЙ)</span></div>
+                            <div class="confidence">Дата рождения: 23.09.2010 (66.67% совпадений)</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Вторичные личности</div>
+                            <div class="item-value">ЗОЛОТАРЕВА ОЛЬГА ИЛЬИНИЧНА (33.33%)</div>
+                            <div class="confidence">Дата рождения: 03.02.1969 | Клиент Альфа-банка</div>
+                            <div class="item-value">АЛЕКСАНДРОВА ТАТЬЯНА ГЕОРГИЕВНА (2013-2015)</div>
+                            <div class="item-value">БАЙРИКОВА ОЛЬГА ИВАНОВНА (2022)</div>
+                            <div class="item-value">ХАЗОВА ОЛЬГА АЛЕКСАНДРОВНА (2021)</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">ИНН</div>
+                            <div class="item-value">366411229940</div>
+                            <div class="confidence verified">✓ Подтвержден через Госуслуги и Добро.ру</div>
                         </div>
                     </div>
-
-                    <div class="bg-slate-900/40 p-6 rounded-2xl border border-white/5">
-                        <div class="flex justify-between mb-4">
-                            <label class="text-slate-300 font-bold">Витки (N2)</label>
-                            <span class="font-mono text-white"><span id="val-n2">100</span></span>
-                        </div>
-                        <input type="range" min="10" max="2000" value="100" step="10" id="input-n2" class="w-full">
-                        <div class="h-2 w-full bg-blue-500/20 mt-4 rounded-full overflow-hidden">
-                            <div id="bar-n2" class="h-full bg-blue-500 transition-all duration-300"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 flex flex-col">
-                <div class="flex-1 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl border border-slate-700 relative overflow-hidden flex flex-col justify-center items-center text-center shadow-2xl p-6">
-                    <div class="absolute inset-0 opacity-20 transition-colors duration-700" id="voltage-bg"></div>
                     
-                    <h3 class="relative text-slate-400 text-sm uppercase tracking-widest mb-4 z-10">Результат на виході</h3>
+                    <!-- КОНТАКТЫ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Контакты</div>
+                            <div class="card-id">02</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Основной телефон</div>
+                            <div class="item-value">79601143787 <span class="phone-status">НЕЖЕЛАТЕЛЬНЫЙ ЗВОНОК</span></div>
+                            <div class="confidence">Оператор: Билайн, Воронежская область</div>
+                            <div class="confidence warning">⚠️ Отмечен как спам в spam.ru (2024)</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Основные Email</div>
+                            <div class="item-value">DHAZOV01@GMAIL.COM (22.22%)</div>
+                            <div class="item-value">DIMITRYKHAZOV@YA.RU (11.11%)</div>
+                            <div class="item-value">DHAZOV974@GMAIL.COM (11.11%)</div>
+                            <div class="item-value">OLGAZOLOTAREVA@YANDEX.RU (11.11%)</div>
+                            <div class="item-value">HAZOVDMITRIJ@GMAIL.COM (11.11%)</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Связанные Email</div>
+                            <div class="item-value">ALEXSEJ_BONDAREV_2013@MAIL.RU</div>
+                            <div class="item-value">KAUFMAN.1983@MAIL.RU</div>
+                            <div class="item-value">LENA.BONDAREVA.1973@MAIL.RU</div>
+                        </div>
+                    </div>
                     
-                    <div class="relative z-10 flex items-baseline justify-center gap-2 mb-2">
-                        <span class="text-7xl md:text-8xl font-bold text-white font-mono drop-shadow-lg tracking-tighter" id="res-u2">22</span>
-                        <span class="text-2xl text-slate-400 font-light">В</span>
+                    <!-- АДРЕСА -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Адреса</div>
+                            <div class="card-id">03</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Основной адрес (42.86%)</div>
+                            <div class="item-value">г. ВОРОНЕЖ, Б-Р ПИОНЕРОВ, Д.5, КВ.62</div>
+                            <div class="confidence">2013-2022: Александрова Т.Г., Байрикова О.И.</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Школьный адрес (2023)</div>
+                            <div class="item-value">г. ВОРОНЕЖ, УЛ. 20-ЛЕТИЯ ОКТЯБРЯ, ДОМ 93</div>
+                            <div class="confidence">МБОУ СОШ №12, 6 "Б" класс</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Прочие адреса</div>
+                            <div class="item-value">КРАСНОДАРСКИЙ КРАЙ, КРАСНОДАР (2022)</div>
+                            <div class="item-value">г. МОСКВА, УЛ. МОНТАЖНАЯ, Д. 9 СТР. 1, КОМ. 12 (2014)</div>
+                            <div class="confidence">ТД "Связь-Регион" (корпоративная регистрация)</div>
+                        </div>
                     </div>
-
-                    <div class="relative z-10 w-full h-px bg-slate-600 my-6"></div>
-
-                    <div id="trans-type" class="relative px-6 py-2 rounded-full text-base font-bold border border-white/10 bg-white/5 backdrop-blur z-10 transition-all duration-500 shadow-lg">
-                        Знижувальний
+                    
+                    <!-- ДОКУМЕНТЫ И РЕГИСТРАЦИИ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Документы и регистрации</div>
+                            <div class="card-id">04</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Госуслуги (2025)</div>
+                            <div class="item-value">Учётная запись подтверждена и активна</div>
+                            <div class="confidence">Дата подтверждения: 22.07.2025</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Волонтёрство (2025)</div>
+                            <div class="item-value">Добро.ру: Хазов Дмитрий Геннадьевич</div>
+                            <div class="confidence">Дата регистрации: 16.04.2025 | ИНН подтвержден</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Образовательные платформы</div>
+                            <div class="item-value">БольшаяПеремена.онлайн (2023)</div>
+                            <div class="item-value">Yudaevschool24.online (2025)</div>
+                        </div>
                     </div>
-
-                    <div class="relative z-10 mt-6 text-xs text-slate-500 font-mono">
-                        k = <span id="val-k">10</span>
+                    
+                    <!-- БАНКИ И ФИНАНСЫ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Банки и финансы</div>
+                            <div class="card-id">05</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Основные банки</div>
+                            <div class="item-value">СБЕРБАНК, АЛЬФА БАНК</div>
+                            <div class="confidence">На имя: Дмитрий Геннадьевич Х.</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Онлайн-банки</div>
+                            <div class="item-value">ЯНДЕКС, WILDBERRIES БАНК, ОЗОН БАНК, Т-БАНК</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Торговые карты</div>
+                            <div class="item-value">Kari.com: Карта 2307621605521 (2022)</div>
+                            <div class="confidence warning">⚠️ Указан год рождения 2000 (несоответствие)</div>
+                            <div class="item-value">ЛУКОЙЛ: Карта 7083373205010341041 (2022)</div>
+                            <div class="confidence">На имя Александрова Т.Г./Байрикова О.И.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- СОЦСЕТИ И ОНЛАЙН-АКТИВНОСТЬ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Онлайн-активность</div>
+                            <div class="card-id">06</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Социальные сети</div>
+                            <div class="item-value">ВКонтакте: Хит Биг (id593889221)</div>
+                            <div class="item-value">Telegram: Mr_mooore (6346393681)</div>
+                            <div class="item-value">TikTok: amogus.cat0</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Регистрации на сайтах</div>
+                            <div class="item-value">Avito.ru, DNS-shop.ru, Mail.ru</div>
+                            <div class="item-value">BurgerKingrus.ru, Lukoil.ru</div>
+                            <div class="item-value">Spam.ru (отметка о жалобах)</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Возможные имена в контактах</div>
+                            <div class="item-value">41 вариант: "Дима Хазов", "Нежелательный звонок", "Дима Море", "Крыса" и др.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- ИНЦИДЕНТЫ И ОСОБЫЕ ОТМЕТКИ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Инциденты и отметки</div>
+                            <div class="card-id">07</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Спам-отметки</div>
+                            <div class="item-value">Spam.ru: "Нежелательный звонок. Есть жалобы"</div>
+                            <div class="confidence">Дата: 24.01.2024 22:07:33</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Несоответствия данных</div>
+                            <div class="item-value">Год рождения: 2010 vs 2000 (kari.com)</div>
+                            <div class="confidence warning">⚠️ Возможно сознательное искажение возраста</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Корпоративная история номера</div>
+                            <div class="item-value">2014: ТД "Связь-Регион" (Москва)</div>
+                            <div class="confidence">Номер изначально корпоративный</div>
+                        </div>
+                    </div>
+                    
+                    <!-- СЕМЕЙНЫЕ И РОДСТВЕННЫЕ СВЯЗИ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Связи и родство</div>
+                            <div class="card-id">08</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Предполагаемые родственники</div>
+                            <div class="item-value">Золотарева Ольга Ильинична (1969 г.р.)</div>
+                            <div class="confidence">Возможно бабушка или мать</div>
+                            <div class="item-value">Хазова Ольга Александровна</div>
+                            <div class="item-value">Александрова Татьяна Георгиевна</div>
+                            <div class="item-value">Байрикова Ольга Ивановна</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Связанные лица</div>
+                            <div class="item-value">Bondarev, Kaufman (через mail.ru)</div>
+                            <div class="confidence">Общие email на mail.ru</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="item-label">Адресное пересечение</div>
+                            <div class="item-value">Один адрес (б-р Пионеров, 5) на 4+ человек</div>
+                            <div class="confidence">Многоквартирный дом, возможно родственники</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 2: ЦЕПОЧКА -->
+            <div class="tab-content" id="chainTab">
+                <div class="chain-container">
+                    <div class="chain-step">
+                        <div class="step-number">01</div>
+                        <div class="step-title">Исходные данные</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Номер телефона</div>
+                                <div class="item-value">79601143787 (Билайн, Воронежская область)</div>
+                                <div class="confidence">Отметка: "Нежелательный звонок. Есть жалобы"</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-step">
+                        <div class="step-number">02</div>
+                        <div class="step-title">Идентификация основного владельца</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Сбор данных через утечки</div>
+                                <div class="item-value">Госуслуги (2025), Добро.ру (2025), БольшаяПеремена (2023) → ХАЗОВ ДМИТРИЙ ГЕННАДЬЕВИЧ, 23.09.2010</div>
+                                <div class="confidence">ИНН 366411229940, подтвержденные аккаунты</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-step">
+                        <div class="step-number">03</div>
+                        <div class="step-title">Установление адресной истории</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Перекрестный анализ адресов</div>
+                                <div class="item-value">ЛУКОЙЛ (2022), абоненты (2013-2015) → г. Воронеж, б-р Пионеров, д.5, кв.62</div>
+                                <div class="confidence">42.86% всех упоминаний адресов</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="item-label">Школьный адрес</div>
+                                <div class="item-value">БольшаяПеремена → ул. 20-летия Октября, 93 (школа №12)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-step">
+                        <div class="step-number">04</div>
+                        <div class="step-title">Обнаружение вторичных лиц</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Анализ исторических привязок</div>
+                                <div class="item-value">Альфа-Банк (2023) → Золотарева Ольга Ильинична (1969)</div>
+                                <div class="item-value">ЛУКОЙЛ, абоненты (2013-2022) → Александрова Т.Г., Байрикова О.И.</div>
+                                <div class="item-value">Билайн (2021) → Хазова Ольга Александровна</div>
+                                <div class="confidence">История номера: корпоративный (2014) → перешел к частным лицам</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-step">
+                        <div class="step-number">05</div>
+                        <div class="step-title">Анализ онлайн-активности</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Сбор цифрового следа</div>
+                                <div class="item-value">Соцсети (VK, TG, TikTok) → подростковая активность</div>
+                                <div class="item-value">Регистрации на сайтах → Avito, DNS-shop, Burger King и др.</div>
+                                <div class="item-value">Банковские привязки → 6+ банков, включая детские (Т-Банк, Яндекс)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chain-step">
+                        <div class="step-number">06</div>
+                        <div class="step-title">Формирование выводов</div>
+                        <div class="data-card" style="border: none; padding: 0;">
+                            <div class="data-item">
+                                <div class="item-label">Ключевые выводы</div>
+                                <div class="item-value">Текущий владелец: несовершеннолетний Хазов Д.Г. (2010 г.р.)</div>
+                                <div class="item-value">Номер имеет историю спам-активности</div>
+                                <div class="item-value">Множественные привязки к взрослым родственникам</div>
+                                <div class="item-value">Активная цифровая жизнь с 12-13 лет</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 3: АНАЛИЗ -->
+            <div class="tab-content" id="analysisTab">
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <div class="card-title">Красные флаги</div>
+                        </div>
+                        <div class="risk-item">Несовершеннолетний с банковскими счетами в 6+ банках</div>
+                        <div class="risk-item">Номер отмечен как "Нежелательный звонок. Есть жалобы"</div>
+                        <div class="risk-item">Несоответствие года рождения (2010 vs 2000 в kari.com)</div>
+                        <div class="risk-item">Корпоративная история номера (ТД "Связь-Регион")</div>
+                        <div class="risk-item">Множественные привязки к разным взрослым женщинам</div>
+                        <div class="risk-item">Активная онлайн-активность с раннего возраста</div>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <div class="card-title">Следующие шаги</div>
+                        </div>
+                        <div class="risk-item">1. <strong>Приоритет:</strong> Проверить законность банковских операций несовершеннолетнего</div>
+                        <div class="risk-item">2. Установить степень родства с Золотаревой О.И. и др.</div>
+                        <div class="risk-item">3. Проверить причины спам-отметок номера</div>
+                        <div class="risk-item">4. Изучить активность в соцсетях на предмет нарушений</div>
+                        <div class="risk-item">5. Проверить регистрацию на маркетплейсах (возможные мошенничества)</div>
+                        <div class="risk-item">6. Установить источник дохода для банковских операций</div>
+                    </div>
+                    
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <div class="card-title">Версии</div>
+                        </div>
+                        <div class="risk-item"><strong>Версия A:</strong> Номер перешел от взрослых родственников к подростку</div>
+                        <div class="risk-item"><strong>Версия B:</strong> Банковские счета оформлены с согласия родителей/опекунов</div>
+                        <div class="risk-item"><strong>Версия C:</strong> Спам-активность связана с предыдущими владельцами номера</div>
+                        <div class="risk-item"><strong>Версия D:</strong> Сознательное искажение возраста для доступа к сервисам (kari.com)</div>
+                        <div class="risk-item"><strong>Версия E:</strong> Номер используется всей семьей (родственниками)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TAB 4: СЕТКА -->
+            <div class="tab-content" id="gridTab">
+                <div class="grid-container">
+                    <!-- СЕТКА СВЯЗЕЙ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Сетка связей</div>
+                        </div>
+                        <div style="font-size: 12px; line-height: 1.8;">
+                            <div style="margin-bottom: 15px;"><strong>ЦЕНТРАЛЬНАЯ ФИГУРА:</strong><br>ХАЗОВ ДМИТРИЙ ГЕННАДЬЕВИЧ (13-14 лет)</div>
+                            
+                            <div style="margin-bottom: 10px;"><strong>└── Телефон:</strong> 79601143787 <span style="color:#ff0000;">[СПАМ]</span></div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>├── Email основные:</strong> dhazov01@gmail.com, dimitrykhazov@ya.ru</div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>├── Соцсети:</strong> VK (Хит Биг), TG (Mr_mooore), TikTok</div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>├── Банки:</strong> 6+ привязок (Сбер, Альфа, Яндекс и др.)</div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>└── Регистрации:</strong> 10+ сайтов (от Avito до Госуслуг)</div>
+                            
+                            <div style="margin-bottom: 10px;"><strong>└── Адреса:</strong></div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>├── Основной:</strong> Воронеж, б-р Пионеров, 5, кв.62 (42.86%)</div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>├── Школьный:</strong> Воронеж, ул. 20-летия Октября, 93</div>
+                            <div style="margin-bottom: 10px; margin-left: 20px;"><strong>└── Прочие:</strong> Краснодар, Москва (корп.)</div>
+                            
+                            <div style="margin-bottom: 10px;"><strong>└── Связанные лица:</strong></div>
+                            <div style="margin-left: 20px;">
+                                <div>├── Золотарева Ольга Ильинична (1969) <span style="color:#666;">[вероятно родственник]</span></div>
+                                <div>├── Александрова Татьяна Георгиевна <span style="color:#666;">[бывший владелец номера?]</span></div>
+                                <div>├── Байрикова Ольга Ивановна <span style="color:#666;">[бывший владелец номера?]</span></div>
+                                <div>├── Хазова Ольга Александровна <span style="color:#666;">[родственник?]</span></div>
+                                <div>└── Bondarev/Kaufman <span style="color:#666;">[общие email]</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- ХРОНОЛОГИЯ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Хронология</div>
+                        </div>
+                        <div style="font-size: 12px; line-height: 1.8;">
+                            <div style="margin-bottom: 10px;"><strong>2010:</strong> Рождение Дмитрия Хазова</div>
+                            <div style="margin-bottom: 10px;"><strong>2013-2015:</strong> Номер у Александровой Т.Г. (абоненты)</div>
+                            <div style="margin-bottom: 10px;"><strong>2014:</strong> Корпоративная регистрация (ТД "Связь-Регион")</div>
+                            <div style="margin-bottom: 10px;"><strong>2021:</strong> Билайн запись: Хазова Ольга Александровна</div>
+                            <div style="margin-bottom: 10px;"><strong>2022:</strong> Карты ЛУКОЙЛ и Kari.com</div>
+                            <div style="margin-bottom: 10px;"><strong>2023:</strong> Регистрация на БольшойПеремене (школа №12)</div>
+                            <div style="margin-bottom: 10px;"><strong>2024:</strong> Отметка о спаме в spam.ru</div>
+                            <div style="margin-bottom: 10px;"><strong>2025:</strong> Подтверждение Госуслуг, регистрация волонтером</div>
+                            <div><strong>2026:</strong> <strong>АКТУАЛЬНО:</strong> Активные банковские счета, соцсети</div>
+                        </div>
+                    </div>
+                    
+                    <!-- ИСТОЧНИКИ ДАННЫХ -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Источники данных</div>
+                        </div>
+                        <div style="font-size: 12px; line-height: 1.8;">
+                            <div style="margin-bottom: 10px;">✔ Госуслуги (2025) - <span style="color:#00ff00;">подтверждено</span></div>
+                            <div style="margin-bottom: 10px;">✔ Добро.ру (2025) - <span style="color:#00ff00;">подтверждено</span></div>
+                            <div style="margin-bottom: 10px;">✔ БольшаяПеремена (2023) - <span style="color:#00ff00;">подтверждено</span></div>
+                            <div style="margin-bottom: 10px;">✔ Альфа-Банк (2023)</div>
+                            <div style="margin-bottom: 10px;">✔ Spam.ru (2024) - <span style="color:#ff0000;">отрицательная</span></div>
+                            <div style="margin-bottom: 10px;">✔ ЛУКОЙЛ (2022)</div>
+                            <div style="margin-bottom: 10px;">✔ Kari.com (2022) - <span style="color:#ff9900;">противоречие</span></div>
+                            <div style="margin-bottom: 10px;">✔ Билайн (2014-2021)</div>
+                            <div style="margin-bottom: 10px;">✔ Абоненты (2013-2015)</div>
+                            <div style="margin-bottom: 10px;">✔ Соцсети (VK, TG, TikTok)</div>
+                            <div>✔ Регистрации на сайтах (10+ источников)</div>
+                        </div>
+                    </div>
+                    
+                    <!-- СТАТУС ПРОВЕРОК -->
+                    <div class="data-card">
+                        <div class="card-header">
+                            <div class="card-title">Статус проверок</div>
+                        </div>
+                        <div style="font-size: 12px; line-height: 1.8;">
+                            <div style="margin-bottom: 10px;"><strong>✓ Подтверждено:</strong></div>
+                            <div style="margin-left: 20px; margin-bottom: 10px;">
+                                <div>• Личность Хазова Д.Г. (ИНН, Госуслуги)</div>
+                                <div>• Возраст (2010 г.р.) - несовершеннолетний</div>
+                                <div>• Адрес в Воронеже (б-р Пионеров, 5)</div>
+                                <div>• Учеба в школе №12</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 10px;"><strong>⚠ Требует проверки:</strong></div>
+                            <div style="margin-left: 20px; margin-bottom: 10px;">
+                                <div>• Родство со взрослыми женщинами</div>
+                                <div>• Законность банковских операций</div>
+                                <div>• Причины спам-отметок</div>
+                                <div>• Источник дохода</div>
+                            </div>
+                            
+                            <div style="margin-bottom: 10px;"><strong>✗ Противоречия:</strong></div>
+                            <div style="margin-left: 20px;">
+                                <div>• Год рождения 2000 в kari.com</div>
+                                <div>• Множественные привязки номера</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="slide" id="slide-5">
-        <h2 class="text-4xl font-bold mb-16 text-center">Навіщо підвищувати напругу?</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl w-full items-center">
-            
-            <div class="relative">
-                <div class="absolute -inset-4 bg-red-500/20 blur-2xl rounded-full"></div>
-                <div class="glass p-10 border border-red-500/30 relative">
-                    <h3 class="text-red-400 font-bold mb-6 text-2xl flex items-center gap-3">
-                        <i data-lucide="flame"></i> Закон Джоуля-Ленца
-                    </h3>
-                    <div class="font-mono text-5xl md:text-6xl mb-6 text-white text-center py-8 border-y border-white/10 bg-black/20 rounded-lg">
-                        Q = <span class="text-red-500">I²</span> · R · t
-                    </div>
-                    <p class="text-slate-300 text-lg leading-relaxed">
-                        Втрати тепла залежать від <span class="text-white font-bold underline decoration-red-500 underline-offset-4">квадрата</span> сили струму.
-                        <br><br>
-                        Зменшимо струм у <span class="text-blue-400 font-bold">10 разів</span> — втрати зменшаться у <span class="text-green-400 font-bold">100 разів</span>!
-                    </p>
-                </div>
-            </div>
-
-            <div class="space-y-8">
-                <div class="glass p-6 group cursor-default">
-                    <div class="flex justify-between mb-2 text-red-300 font-bold text-sm tracking-widest">
-                        <span>БЕЗ ТРАНСФОРМАТОРА (Велика I)</span>
-                        <span>Втрати 90%</span>
-                    </div>
-                    <div class="h-8 bg-slate-900 rounded-full relative overflow-hidden border border-slate-700">
-                        <div class="absolute inset-0 bg-red-600 animate-pulse"></div>
-                        <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-white uppercase">Нагрів проводів</div>
-                    </div>
-                </div>
-
-                <div class="glass p-6 group cursor-default">
-                    <div class="flex justify-between mb-2 text-green-300 font-bold text-sm tracking-widest">
-                        <span>З ТРАНСФОРМАТОРОМ (Мала I)</span>
-                        <span>Втрати 2%</span>
-                    </div>
-                    <div class="h-8 bg-slate-900 rounded-full relative overflow-hidden border border-slate-700">
-                        <div class="absolute inset-0 bg-green-500 w-[5%] transition-all group-hover:w-[6%]"></div>
-                        <div class="absolute top-0 left-0 h-full w-2 bg-white blur-[2px] shadow-[0_0_10px_white]" style="animation: moveLine 3s linear infinite;"></div>
-                        <div class="absolute top-0 left-0 h-full w-2 bg-white blur-[2px] shadow-[0_0_10px_white]" style="animation: moveLine 3s linear infinite 1.5s;"></div>
-                    </div>
-                </div>
-                
-                <div class="glass p-4 bg-blue-900/20 border-blue-500/30 text-center">
-                    <p class="text-blue-200">Трансформатор дозволяє передавати енергію на тисячі кілометрів.</p>
-                </div>
-            </div>
-        </div>
-        <style>@keyframes moveLine { from { transform: translateX(0); opacity:0; } 10% {opacity:1;} 90% {opacity:1;} to { transform: translateX(600px); opacity:0; } }</style>
-    </div>
-
-    <div class="slide" id="slide-6">
-        <h2 class="text-4xl font-bold mb-16 text-center">Шлях енергії до вашого дому</h2>
-        
-        <div class="w-full max-w-7xl relative">
-            <div class="absolute top-1/2 left-0 w-full h-1 bg-slate-800 -translate-y-1/2 rounded-full overflow-hidden">
-                <div class="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-transparent via-yellow-400 to-transparent" style="animation: dash 4s linear infinite;"></div>
-            </div>
-
-            <div class="grid grid-cols-4 gap-4 relative z-10">
-                <div class="flex flex-col items-center group">
-                    <div class="w-24 h-24 glass flex items-center justify-center rounded-2xl mb-6 group-hover:-translate-y-2 transition-transform duration-500 border-yellow-500/20">
-                        <i data-lucide="factory" class="w-10 h-10 text-yellow-500"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Генерація</div>
-                        <div class="text-2xl font-bold text-white">12 кВ</div>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center group mt-[-30px]">
-                    <div class="mb-4">
-                        <span class="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold uppercase">Підвищення</span>
-                    </div>
-                    <div class="w-32 h-32 bg-slate-900 border border-slate-600 rounded-full flex items-center justify-center relative shadow-[0_0_30px_rgba(234,179,8,0.2)]">
-                        <i data-lucide="zap" class="w-12 h-12 text-yellow-400 fill-yellow-400 animate-pulse"></i>
-                        <div class="absolute -bottom-10 font-mono text-yellow-400 font-bold text-xl">750 кВ</div>
-                    </div>
-                    <div class="mt-12 text-center max-w-[150px]">
-                        <p class="text-xs text-slate-400">ЛЕП надвисокої напруги</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center group mt-[-30px]">
-                     <div class="mb-4">
-                        <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded font-bold uppercase">Зниження</span>
-                    </div>
-                    <div class="w-24 h-24 bg-slate-800 border border-slate-600 rounded-full flex items-center justify-center">
-                        <i data-lucide="arrow-down-right" class="w-8 h-8 text-blue-400"></i>
-                    </div>
-                     <div class="mt-4 text-center">
-                        <div class="text-2xl font-bold text-white">10 кВ</div>
-                        <p class="text-xs text-slate-400">Районна підстанція</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center group">
-                    <div class="w-24 h-24 glass flex items-center justify-center rounded-2xl mb-6 group-hover:-translate-y-2 transition-transform duration-500 border-green-500/20">
-                        <i data-lucide="armchair" class="w-10 h-10 text-green-500"></i>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-xs text-slate-400 uppercase tracking-widest mb-1">Споживання</div>
-                        <div class="text-2xl font-bold text-white">220 В</div>
-                    </div>
-                </div>
-            </div>
-            <style>@keyframes dash { 0% { left: -33%; } 100% { left: 100%; } }</style>
-        </div>
-    </div>
-
-    <div class="slide" id="slide-7">
-        <h2 class="text-4xl font-bold mb-12 text-center">Де вони навколо нас?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl w-full px-4">
-            
-            <div class="glass p-8 hover:-translate-y-4 transition-all duration-500 cursor-default group border-t-4 border-t-blue-500">
-                <div class="bg-blue-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-500">
-                    <i data-lucide="utility-pole" class="w-8 h-8 text-blue-400 group-hover:text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Силові</h3>
-                <p class="text-slate-400 leading-relaxed">
-                    Масляні гіганти на підстанціях. Гудуть через явище <em>магнітострикції</em>. Забезпечують світлом цілі міста.
-                </p>
-            </div>
-
-            <div class="glass p-8 hover:-translate-y-4 transition-all duration-500 cursor-default group border-t-4 border-t-purple-500">
-                <div class="bg-purple-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-500">
-                    <i data-lucide="speaker" class="w-8 h-8 text-purple-400 group-hover:text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Тороїдальні</h3>
-                <p class="text-slate-400 leading-relaxed">
-                    Схожі на бублик. Використовуються в High-End аудіотехніці, бо створюють найменше електромагнітних завад.
-                </p>
-            </div>
-
-            <div class="glass p-8 hover:-translate-y-4 transition-all duration-500 cursor-default group border-t-4 border-t-green-500">
-                <div class="bg-green-500/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-colors duration-500">
-                    <i data-lucide="smartphone-charging" class="w-8 h-8 text-green-400 group-hover:text-white"></i>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Імпульсні</h3>
-                <p class="text-slate-400 leading-relaxed">
-                    Крихітні трансформатори всередині вашої зарядки для телефону. Працюють на високих частотах (кГц), тому такі легкі.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="slide" id="slide-8">
-        <div class="text-center max-w-4xl relative">
-            <div class="absolute -inset-20 bg-gradient-to-r from-blue-600 to-purple-600 opacity-20 blur-[100px] rounded-full"></div>
-            
-            <div class="relative z-10 glass p-16 border border-white/10 shadow-2xl">
-                <div class="mb-8 flex justify-center">
-                    <div class="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center shadow-[0_0_30px_#22c55e] animate-bounce">
-                        <i data-lucide="check" class="w-10 h-10 text-white stroke-[4]"></i>
-                    </div>
-                </div>
-                
-                <h2 class="text-5xl md:text-7xl font-bold mb-8 text-white tracking-tight">Дякую за увагу!</h2>
-                <p class="text-2xl text-slate-300 font-light mb-12">Трансформатор — це "серце", яке качає енергію по венах нашої цивілізації.</p>
-                
-                <button onclick="restart()" class="group px-8 py-4 bg-white text-slate-900 hover:bg-slate-200 rounded-xl font-bold text-lg transition-all flex items-center gap-3 mx-auto shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                    <span>Почати знову</span>
-                    <i data-lucide="rotate-ccw" class="w-5 h-5 group-hover:-rotate-180 transition-transform duration-500"></i>
-                </button>
-            </div>
-        </div>
+        <!-- FOOTER -->
+        <footer class="footer">
+            OSINT Расследование | Номер 79601143787 | Данные актуальны на 11.01.2026 | Версия 2.0 | Несовершеннолетний
+        </footer>
     </div>
 
     <script>
-        lucide.createIcons();
-
-        let currentSlide = 1;
-        const totalSlides = 8;
-
-        // Init dots
-        const dotsContainer = document.getElementById('dots-container');
-        for(let i=1; i<=totalSlides; i++) {
-            const dot = document.createElement('div');
-            dot.className = `w-2 h-2 rounded-full bg-slate-600 cursor-pointer transition-all duration-300 hover:bg-slate-400`;
-            dot.onclick = () => showSlide(i);
-            dotsContainer.appendChild(dot);
-        }
-
-        function updateDots() {
-            const dots = dotsContainer.children;
-            for(let i=0; i<dots.length; i++) {
-                if (i + 1 === currentSlide) {
-                    dots[i].className = 'w-8 h-2 rounded-full bg-blue-500 cursor-pointer shadow-[0_0_10px_#3b82f6] transition-all duration-300';
-                } else {
-                    dots[i].className = 'w-2 h-2 rounded-full bg-slate-600 cursor-pointer transition-all duration-300 hover:bg-slate-400';
-                }
-            }
-            // Update Progress Bar
-            const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-            document.getElementById('progress-bar').style.width = `${progress}%`;
-        }
-
-        function showSlide(n) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            
-            if (n > totalSlides) currentSlide = 1;
-            else if (n < 1) currentSlide = totalSlides;
-            else currentSlide = n;
-
-            document.getElementById(`slide-${currentSlide}`).classList.add('active');
-            
-            // Buttons logic
-            document.getElementById('btnPrev').disabled = (currentSlide === 1);
-            const btnNext = document.getElementById('btnNext');
-            if(currentSlide === totalSlides) {
-                btnNext.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                btnNext.classList.remove('opacity-0', 'pointer-events-none');
-            }
-            
-            updateDots();
-        }
-
-        function nextSlide() { showSlide(currentSlide + 1); }
-        function prevSlide() { showSlide(currentSlide - 1); }
-        function restart() { showSlide(1); }
-
-        // Calculator Logic
-        const u1El = document.getElementById('input-u1');
-        const n1El = document.getElementById('input-n1');
-        const n2El = document.getElementById('input-n2');
-        const resEl = document.getElementById('res-u2');
-        const bgEl = document.getElementById('voltage-bg');
-        const typeEl = document.getElementById('trans-type');
-        const kEl = document.getElementById('val-k');
-
-        function updateCalculator() {
-            const u1 = parseInt(u1El.value);
-            const n1 = parseInt(n1El.value);
-            const n2 = parseInt(n2El.value);
-            
-            const u2 = Math.round(u1 * (n2 / n1));
-            const k = (n1 / n2).toFixed(2); // Transformation ratio
-            
-            document.getElementById('val-u1').innerText = u1;
-            document.getElementById('val-n1').innerText = n1;
-            document.getElementById('val-n2').innerText = n2;
-            resEl.innerText = u2;
-            kEl.innerText = k;
-
-            // Visual bars update
-            document.getElementById('bar-n1').style.width = `${(n1/2000)*100}%`;
-            document.getElementById('bar-n2').style.width = `${(n2/2000)*100}%`;
-
-            if (u2 > u1) {
-                typeEl.innerText = "ПІДВИЩУВАЛЬНИЙ";
-                typeEl.className = "relative px-6 py-2 rounded-full text-base font-bold border border-red-500/50 bg-red-500/20 text-red-200 z-10 transition-all shadow-[0_0_15px_rgba(239,68,68,0.3)]";
-                bgEl.className = "absolute inset-0 bg-gradient-to-t from-red-600/30 to-transparent transition-colors duration-700";
-            } else if (u2 < u1) {
-                typeEl.innerText = "ЗНИЖУВАЛЬНИЙ";
-                typeEl.className = "relative px-6 py-2 rounded-full text-base font-bold border border-blue-500/50 bg-blue-500/20 text-blue-200 z-10 transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)]";
-                bgEl.className = "absolute inset-0 bg-gradient-to-t from-blue-600/30 to-transparent transition-colors duration-700";
-            } else {
-                typeEl.innerText = "РОЗДІЛОВИЙ (1:1)";
-                typeEl.className = "relative px-6 py-2 rounded-full text-base font-bold border border-slate-500/50 bg-slate-800 text-slate-300 z-10 transition-all";
-                bgEl.className = "absolute inset-0 bg-transparent transition-colors duration-700";
+        // ЭЛЕМЕНТЫ ДОМ
+        const loginScreen = document.getElementById('loginScreen');
+        const mainInterface = document.getElementById('mainInterface');
+        const loginBtn = document.getElementById('loginBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // ПРОВЕРКА АВТОРИЗАЦИИ
+        function checkAuth() {
+            const isLoggedIn = localStorage.getItem('osintAuth');
+            if (isLoggedIn === 'true') {
+                loginScreen.style.display = 'none';
+                mainInterface.style.display = 'block';
             }
         }
-
-        [u1El, n1El, n2El].forEach(el => el.addEventListener('input', updateCalculator));
-
-        // Initial setup
-        showSlide(1);
-        updateCalculator();
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
+        
+        // ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            
+            // ВХОД ПО КНОПКЕ
+            loginBtn.addEventListener('click', function() {
+                localStorage.setItem('osintAuth', 'true');
+                loginScreen.style.display = 'none';
+                mainInterface.style.display = 'block';
+            });
+            
+            // ВЫХОД
+            logoutBtn.addEventListener('click', function() {
+                localStorage.removeItem('osintAuth');
+                location.reload();
+            });
+            
+            // ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Убираем активный класс у всех вкладок
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Добавляем активный класс текущей вкладке
+                    this.classList.add('active');
+                    document.getElementById(tabId + 'Tab').classList.add('active');
+                });
+            });
         });
     </script>
 </body>
